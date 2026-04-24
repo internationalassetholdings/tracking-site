@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>International Asset Holdings - Tracking</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="brand">
+      <div class="logo">IAH</div>
+      <div>
+        <h1>International Asset Holdings</h1>
+        <p>Secure Asset & Package Tracking</p>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <h2>Track Your Shipment</h2>
+      <p>Enter your tracking number below to view current shipment details.</p>
+
+      <div class="tracking-box">
+        <input id="trackingInput" type="text" placeholder="Enter tracking number" />
+        <button onclick="trackPackage()">Track Now</button>
+      </div>
+
+      <p class="hint">Tracking number: <b>IAH042526GOLD</b></p>
+    </section>
+
+    <section id="result" class="result hidden"></section>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 International Asset Holdings. All rights reserved.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

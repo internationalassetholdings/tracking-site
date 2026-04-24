@@ -1,42 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>International Asset Holdings - Tracking</title>
-  <link rel="stylesheet" href="style.css" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>International Asset Holdings Tracking</title>
+<style>
+body{margin:0;font-family:Arial,sans-serif;background:#f5f6f8;color:#222}
+header{background:#111827;color:#fff;padding:20px;text-align:center}
+main{max-width:900px;margin:auto;padding:30px}
+.box{background:#fff;padding:30px;border-radius:14px;box-shadow:0 10px 25px rgba(0,0,0,.08);text-align:center}
+input{padding:12px;width:260px;border:1px solid #ccc;border-radius:8px}
+button{padding:12px 20px;background:#c9a227;border:none;border-radius:8px;font-weight:bold;margin-left:8px}
+#result{margin-top:20px;background:#fff;padding:20px;border-radius:14px}
+footer{text-align:center;padding:20px;color:#777}
+</style>
 </head>
 <body>
-  <header class="site-header">
-    <div class="brand">
-      <div class="logo">IAH</div>
-      <div>
-        <h1>International Asset Holdings</h1>
-        <p>Secure Asset & Package Tracking</p>
-      </div>
-    </div>
-  </header>
-
-  <main>
-    <section class="hero">
-      <h2>Track Your Shipment</h2>
-      <p>Enter your tracking number below to view current shipment details.</p>
-
-      <div class="tracking-box">
-        <input id="trackingInput" type="text" placeholder="Enter tracking number" />
-        <button onclick="trackPackage()">Track Now</button>
-      </div>
-
-      <p class="hint">Tracking number: <b>IAH042526GOLD</b></p>
-    </section>
-
-    <section id="result" class="result hidden"></section>
-  </main>
-
-  <footer>
-    <p>&copy; 2026 International Asset Holdings. All rights reserved.</p>
-  </footer>
-
-  <script src="script.js"></script>
+<header>
+<h1>International Asset Holdings</h1>
+<p>Secure Asset & Package Tracking</p>
+</header>
+<main>
+<div class="box">
+<h2>Track Your Shipment</h2>
+<p>Enter tracking number below</p>
+<input id="tracking" placeholder="Enter tracking number">
+<button onclick="trackPackage()">Track</button>
+<p><small>Sample: IAH042526GOLD</small></p>
+</div>
+<div id="result"></div>
+</main>
+<footer>&copy; 2026 International Asset Holdings</footer>
+<script>
+function trackPackage(){
+let code=document.getElementById("tracking").value.trim().toUpperCase();
+let result=document.getElementById("result");
+if(code==="IAH042526GOLD"){
+result.innerHTML="<h3>Tracking Found</h3><p><b>Status:</b> In Transit</p><p><b>Location:</b> Accra, Ghana</p><p><b>Receiver:</b> Micheal J. Collier & Kate Jason Bilson</p><p><b>Estimated Delivery:</b> 25th April 2026</p>";
+}else if(code===""){
+result.innerHTML="<h3>Please enter tracking number</h3>";
+}else{
+result.innerHTML="<h3>Tracking number not found</h3>";
+}
+}
+</script>
 </body>
 </html>

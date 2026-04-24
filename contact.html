@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact Us - International Asset Holdings</title>
+<style>
+body{margin:0;font-family:Arial,sans-serif;background:#f4f6f8;color:#222}
+header{background:#111827;color:white;padding:24px;text-align:center}
+nav{background:#1f2937;text-align:center;padding:12px}
+nav a{color:white;text-decoration:none;margin:0 14px;font-weight:bold}
+main{max-width:900px;margin:auto;padding:28px}
+.card{background:white;padding:28px;border-radius:16px;box-shadow:0 10px 25px rgba(0,0,0,.08);margin-bottom:20px}
+h2{margin-top:0}
+.info{line-height:1.9;font-size:17px}
+label{display:block;margin-top:12px;font-weight:bold}
+input,textarea{width:100%;padding:13px;margin-top:6px;border:1px solid #ccc;border-radius:8px;font-size:15px}
+button{margin-top:15px;padding:13px 20px;background:#c9a227;border:none;border-radius:8px;font-weight:bold;cursor:pointer}
+footer{text-align:center;padding:20px;color:#777}
+</style>
+</head>
+<body>
+<header>
+<h1>International Asset Holdings</h1>
+<p>Secure Asset & Package Tracking</p>
+</header>
+
+<nav>
+<a href="index.html">Home</a>
+<a href="index.html">Track Shipment</a>
+<a href="contact.html">Contact Us</a>
+</nav>
+
+<main>
+<section class="card">
+<h2>Contact Us</h2>
+<p>For shipment tracking support, ownership records, and asset handling enquiries, contact our support desk using the details below.</p>
+
+<div class="info">
+<p><b>Company:</b> International Asset Holdings</p>
+<p><b>Phone:</b> 9313777510</p>
+<p><b>Email:</b> internationalassetholding@gmail.com</p>
+<p><b>Office Location:</b> Russia</p>
+</div>
+</section>
+
+<section class="card">
+<h2>Send a Message</h2>
+<form onsubmit="sendMessage(event)">
+<label>Your Name</label>
+<input type="text" required>
+
+<label>Your Email</label>
+<input type="email" required>
+
+<label>Message</label>
+<textarea rows="5" required></textarea>
+
+<button type="submit">Submit Message</button>
+</form>
+<p id="msg"></p>
+</section>
+</main>
+
+<footer>&copy; 2026 International Asset Holdings. All rights reserved.</footer>
+
+<script>
+function sendMessage(e){
+e.preventDefault();
+document.getElementById("msg").innerHTML="Thank you. Your message has been received.";
+}
+</script>
+</body>
+</html>

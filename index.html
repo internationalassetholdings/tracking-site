@@ -5,253 +5,128 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <title>International Asset Holdings Tracking</title>
 <style>
-*{
-  box-sizing:border-box;
-}
-html,body{
-  width:100%;
-  overflow-x:hidden;
-}
-body{
-  margin:0;
-  font-family:Arial,Helvetica,sans-serif;
-  background:#f4f6f8;
-  color:#222;
-  font-size:16px;
-}
-header{
-  background:#111827;
-  color:#fff;
-  padding:22px 14px;
-  text-align:center;
-}
-header h1{
-  margin:0;
-  font-size:20px;
-  line-height:1.3;
-}
-header p{
-  margin:6px 0 0;
-  color:#d1d5db;
-  font-size:13px;
-}
-nav{
-  background:#1f2937;
-  display:flex;
-  justify-content:space-around;
-  align-items:center;
-  width:100%;
-  padding:8px 4px;
-}
-nav a{
-  color:white;
-  text-decoration:none;
-  font-weight:bold;
-  font-size:12px;
-  padding:9px 6px;
-  white-space:nowrap;
-}
-main{
-  width:100%;
-  padding:12px;
-}
-.box,.result{
-  width:100%;
-  background:#fff;
-  padding:20px 14px;
-  border-radius:14px;
-  box-shadow:0 6px 18px rgba(0,0,0,.08);
-}
-.box{
-  text-align:center;
-}
-.box h2{
-  margin:0 0 8px;
-  font-size:24px;
-}
-.box p{
-  margin:0 0 16px;
-  color:#555;
-  font-size:15px;
-  line-height:1.5;
-}
-.track-form{
-  width:100%;
-}
-input{
-  width:100%;
-  max-width:100%;
-  display:block;
-  padding:16px 14px;
-  border:1px solid #bbb;
-  border-radius:10px;
-  font-size:16px;
-  outline:none;
-  -webkit-appearance:none;
-  appearance:none;
-}
-button{
-  width:100%;
-  display:block;
-  padding:16px;
-  background:#c9a227;
-  border:none;
-  border-radius:10px;
-  font-weight:bold;
-  font-size:16px;
-  margin-top:12px;
-  cursor:pointer;
-}
-.result{
-  margin-top:14px;
-}
-.result h2{
-  font-size:22px;
-  margin-top:0;
-}
-.status{
-  display:block;
-  width:100%;
-  text-align:center;
-  background:#fff8dc;
-  color:#7a5a00;
-  padding:10px 12px;
-  border-radius:10px;
-  font-weight:bold;
-  margin:12px 0;
-}
-.info-grid{
-  display:block;
-  margin-top:12px;
-}
-.info-card{
-  width:100%;
-  background:#f9fafb;
-  border-left:4px solid #c9a227;
-  padding:13px;
-  border-radius:10px;
-  margin-bottom:10px;
-  line-height:1.5;
-  word-wrap:break-word;
-}
-.timeline{
-  margin-top:20px;
-  border-left:3px solid #c9a227;
-  padding-left:14px;
-}
-.timeline h3{
-  font-size:18px;
-}
-.event{
-  margin-bottom:18px;
-  line-height:1.5;
-  font-size:15px;
-}
-.event b{
-  display:block;
-  color:#111827;
-  margin-bottom:3px;
-}
-footer{
-  text-align:center;
-  padding:18px 10px;
-  color:#777;
-  font-size:12px;
-}
+*{box-sizing:border-box}
+html,body{width:100%;overflow-x:hidden}
+body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#f4f6f8;color:#222;font-size:16px}
+header{background:#111827;color:#fff;padding:22px 14px;text-align:center}
+header h1{margin:0;font-size:20px;line-height:1.3}
+header p{margin:6px 0 0;color:#d1d5db;font-size:13px}
+nav{background:#1f2937;display:flex;justify-content:space-around;align-items:center;width:100%;padding:8px 4px}
+nav a{color:white;text-decoration:none;font-weight:bold;font-size:12px;padding:9px 6px;white-space:nowrap}
+main{width:100%;padding:12px}
+.box,.result{width:100%;background:#fff;padding:20px 14px;border-radius:14px;box-shadow:0 6px 18px rgba(0,0,0,.08)}
+.box{text-align:center}
+.box h2{margin:0 0 8px;font-size:24px}
+.box p{margin:0 0 16px;color:#555;font-size:15px;line-height:1.5}
+input{width:100%;max-width:100%;display:block;padding:16px 14px;border:1px solid #bbb;border-radius:10px;font-size:16px;outline:none}
+button{width:100%;display:block;padding:16px;background:#c9a227;border:none;border-radius:10px;font-weight:bold;font-size:16px;margin-top:12px;cursor:pointer}
+.result{margin-top:14px}
+.result h2{font-size:22px;margin-top:0}
+.status{display:block;width:100%;text-align:center;background:#fff8dc;color:#7a5a00;padding:10px 12px;border-radius:10px;font-weight:bold;margin:12px 0}
+.info-card{width:100%;background:#f9fafb;border-left:4px solid #c9a227;padding:13px;border-radius:10px;margin-bottom:10px;line-height:1.5;word-wrap:break-word}
+.timeline{margin-top:22px}
+.timeline h3{font-size:19px;margin-bottom:15px}
+.timeline-list{border-left:3px solid #c9a227;padding-left:16px}
+.event{position:relative;background:#f9fafb;border-radius:12px;padding:14px;margin-bottom:14px;line-height:1.5}
+.event:before{content:"";position:absolute;left:-25px;top:18px;width:14px;height:14px;background:#c9a227;border-radius:50%;border:3px solid #fff}
+.event-title{font-weight:bold;color:#111827;font-size:16px;margin-bottom:5px}
+.event-meta{font-size:14px;color:#6b7280;margin-bottom:7px}
+.event-note{font-size:15px;color:#333}
+footer{text-align:center;padding:18px 10px;color:#777;font-size:12px}
 @media(min-width:700px){
-  main{
-    max-width:900px;
-    margin:auto;
-    padding:24px;
-  }
-  header h1{
-    font-size:26px;
-  }
-  nav{
-    justify-content:center;
-    gap:24px;
-  }
-  nav a{
-    font-size:15px;
-  }
-  .box,.result{
-    padding:30px;
-  }
-  .track-form{
-    max-width:450px;
-    margin:auto;
-  }
-  .info-grid{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:12px;
-  }
-  .info-card{
-    margin-bottom:0;
-  }
+main{max-width:900px;margin:auto;padding:24px}
+header h1{font-size:26px}
+nav{justify-content:center;gap:24px}
+nav a{font-size:15px}
+.box,.result{padding:30px}
+.track-form{max-width:450px;margin:auto}
+.info-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.info-card{margin-bottom:0}
 }
 </style>
 </head>
 <body>
 <header>
-  <h1>International Asset Holdings</h1>
-  <p>Secure Asset & Package Tracking</p>
+<h1>International Asset Holdings</h1>
+<p>Secure Asset & Package Tracking</p>
 </header>
 
 <nav>
-  <a href="index.html">Home</a>
-  <a href="index.html">Track</a>
-  <a href="contact.html">Contact Us</a>
+<a href="index.html">Home</a>
+<a href="index.html">Track</a>
+<a href="contact.html">Contact Us</a>
 </nav>
 
 <main>
-  <section class="box">
-    <h2>Track Your Shipment</h2>
-    <p>Enter your tracking number below to view shipment status and movement history.</p>
+<section class="box">
+<h2>Track Your Shipment</h2>
+<p>Enter your tracking number below to view shipment status and movement history.</p>
+<div class="track-form">
+<input id="tracking" placeholder="Enter tracking number">
+<button onclick="trackPackage()">Track Package</button>
+</div>
+</section>
 
-    <div class="track-form">
-      <input id="tracking" placeholder="Enter tracking number">
-      <button onclick="trackPackage()">Track Package</button>
-    </div>
-  </section>
-
-  <section id="result"></section>
+<section id="result"></section>
 </main>
 
 <footer>&copy; 2026 International Asset Holdings. All rights reserved.</footer>
 
 <script>
 function trackPackage(){
-  let code=document.getElementById("tracking").value.trim().toUpperCase();
-  let result=document.getElementById("result");
+let code=document.getElementById("tracking").value.trim().toUpperCase();
+let result=document.getElementById("result");
 
-  if(code==="TR599652932"){
-    result.innerHTML=`
-    <div class="result">
-      <h2>Tracking History</h2>
-      <p><b>Tracking Number:</b><br>TR599652932</p>
-      <p class="status">Shipment Received</p>
+if(code==="TR599652932"){
+result.innerHTML=`
+<div class="result">
+<h2>Tracking Details</h2>
+<p><b>Tracking Number:</b><br>TR599652932</p>
+<p class="status">Shipment Received</p>
 
-      <div class="info-grid">
-        <div class="info-card"><b>Current Location</b><br>Russia</div>
-        <div class="info-card"><b>Shipment Type</b><br>Secure Asset Package</div>
-        <div class="info-card"><b>Carrier Status</b><br>Received by Shipper</div>
-        <div class="info-card"><b>Last Updated</b><br>27th Apr 2026 - 12:00 PM</div>
-      </div>
+<div class="info-grid">
+<div class="info-card"><b>Current Location</b><br>Russia</div>
+<div class="info-card"><b>Shipment Type</b><br>Secure Asset Package</div>
+<div class="info-card"><b>Current Stage</b><br>Received and Scanned</div>
+<div class="info-card"><b>Last Updated</b><br>27th April 2026 - 12:00 PM</div>
+</div>
 
-      <div class="timeline">
-        <h3>Shipment Movement History</h3>
-        <div class="event"><b>Shipment Record Created</b>27th Apr 2026 - 09:10 AM</div>
-        <div class="event"><b>Ownership Verification Completed</b>27th Apr 2026 - 10:25 AM</div>
-        <div class="event"><b>Item received from shipper</b>27th Apr 2026 - 10:30 AM</div>
-        <div class="event"><b>Item scanned</b>27th Apr 2026 - 12:00 PM</div>
-      </div>
-    </div>`;
-  }else if(code===""){
-    result.innerHTML='<div class="result"><h3>Please enter a tracking number.</h3></div>';
-  }else{
-    result.innerHTML='<div class="result"><h3>Tracking number not found</h3></div>';
-  }
+<div class="timeline">
+<h3>Shipment History</h3>
+<div class="timeline-list">
+
+<div class="event">
+<div class="event-title">Shipment Record Created</div>
+<div class="event-meta">27th April 2026 • 09:10 AM • Russia</div>
+<div class="event-note">A shipment record was created and assigned to tracking number TR599652932.</div>
+</div>
+
+<div class="event">
+<div class="event-title">Ownership Verification Completed</div>
+<div class="event-meta">27th April 2026 • 10:25 AM • Russia</div>
+<div class="event-note">Ownership and shipment documentation were reviewed and confirmed for processing.</div>
+</div>
+
+<div class="event">
+<div class="event-title">Item Received From Shipper</div>
+<div class="event-meta">27th April 2026 • 10:30 AM • Russia</div>
+<div class="event-note">The item was received from the shipper and accepted into the handling record.</div>
+</div>
+
+<div class="event">
+<div class="event-title">Item Scanned</div>
+<div class="event-meta">27th April 2026 • 12:00 PM • Russia</div>
+<div class="event-note">The shipment was scanned and remains recorded at the current processing location.</div>
+</div>
+
+</div>
+</div>
+</div>`;
+}else if(code===""){
+result.innerHTML='<div class="result"><h3>Please enter a tracking number.</h3></div>';
+}else{
+result.innerHTML='<div class="result"><h3>Tracking number not found</h3></div>';
+}
 }
 </script>
 </body>

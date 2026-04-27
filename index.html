@@ -71,6 +71,25 @@ button{width:180px;margin-top:0}
 .route-step span{display:block;color:#6b7280;font-size:13px;margin-top:4px}
 @media(min-width:720px){.route-line{grid-template-columns:repeat(5,1fr)}}
 
+
+/* Compact layout update */
+.panel{border-radius:10px}
+.panel-head{padding:12px 14px}
+.panel-head h2{font-size:20px}
+.summary,.progress,.parties,.route,.history{padding:12px 14px}
+.summary-grid{gap:8px;margin-top:8px}
+.sum-box,.party-box,.route-step{padding:10px;font-size:14px}
+.badge{padding:7px 9px;font-size:13px}
+.route h3,.history h3,.parties h3{font-size:18px;margin-bottom:10px}
+.route-line{gap:7px}
+.row{grid-template-columns:82px 1fr}
+.date,.details{padding:10px}
+.note{margin-top:4px}
+@media(min-width:720px){
+  .route-line{grid-template-columns:repeat(5,1fr)}
+  .row{grid-template-columns:135px 1fr}
+}
+
 </style>
 </head>
 <body>
@@ -109,7 +128,7 @@ if(code==="TR599652932"){
 result.innerHTML=`
 <div class="panel">
   <div class="panel-head">
-    <h2>Shipment Tracking</h2>
+    <h2>Tracking Result</h2>
   </div>
 
   <div class="summary">
@@ -138,13 +157,13 @@ result.innerHTML=`
   </div>
 
   <div class="route">
-    <h3>Route Tracker</h3>
+    <h3>Route Progress</h3>
     <div class="route-line">
-      <div class="route-step active"><b>Russia</b><span>Shipment received and awaiting dispatch</span></div>
-      <div class="route-step"><b>Transit Hub</b><span>Pending departure from Russia</span></div>
-      <div class="route-step"><b>USA</b><span>Pending international arrival</span></div>
-      <div class="route-step"><b>Alabama</b><span>Pending local processing</span></div>
-      <div class="route-step"><b>Delivered</b><span>Pending delivery confirmation</span></div>
+      <div class="route-step active"><b>Russia</b><span>Received</span></div>
+      <div class="route-step"><b>Transit Hub</b><span>Awaiting dispatch</span></div>
+      <div class="route-step"><b>USA</b><span>Pending arrival</span></div>
+      <div class="route-step"><b>Alabama</b><span>Pending local</span></div>
+      <div class="route-step"><b>Delivered</b><span>Pending</span></div>
     </div>
   </div>
 

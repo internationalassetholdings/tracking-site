@@ -27,21 +27,11 @@ button{width:100%;margin-top:10px;padding:16px;background:#c9a227;border:none;bo
 .summary-grid{display:grid;grid-template-columns:1fr;gap:10px;margin-top:12px}
 .sum-box{background:#f9fafb;border:1px solid #e5e7eb;border-radius:8px;padding:12px}
 .sum-box span{display:block;color:#6b7280;font-size:13px;margin-bottom:4px}
-.delivery-card{margin-top:14px;background:#fffaf0;border:1px solid #f1d27a;border-radius:10px;padding:14px}
-.delivery-card span{display:block;color:#7a5700;font-size:13px;margin-bottom:4px;font-weight:bold}
-.delivery-card b{font-size:18px}
-.progress-wrap{padding:18px 16px;border-bottom:1px solid #e5e7eb}
-.progress-title{font-weight:bold;margin-bottom:14px}
-.progress-bar{position:relative;margin:18px 0 8px;padding:0 4px}
-.progress-line{position:absolute;top:18px;left:9%;right:9%;height:5px;background:#d1d5db;border-radius:10px}
-.progress-fill{position:absolute;top:18px;left:9%;width:28%;height:5px;background:#c9a227;border-radius:10px}
-.steps{display:grid;grid-template-columns:repeat(4,1fr);position:relative;z-index:2}
-.step{text-align:center;font-size:11px;color:#6b7280}
-.circle{width:38px;height:38px;border-radius:50%;margin:0 auto 7px;background:#d1d5db;color:white;display:flex;align-items:center;justify-content:center;font-weight:bold;border:4px solid white;box-shadow:0 0 0 1px #d1d5db}
-.step.done .circle,.step.active .circle{background:#c9a227;box-shadow:0 0 0 1px #c9a227}
-.step.done,.step.active{color:#111827;font-weight:bold}
-.step.active .circle{animation:pulse 1.6s infinite}
-@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(201,162,39,.6)}70%{box-shadow:0 0 0 8px rgba(201,162,39,0)}100%{box-shadow:0 0 0 0 rgba(201,162,39,0)}}
+.progress{padding:16px;border-bottom:1px solid #e5e7eb}
+.steps{display:flex;align-items:center;justify-content:space-between;gap:4px}
+.step{text-align:center;flex:1;font-size:11px;color:#6b7280}
+.dot{width:18px;height:18px;border-radius:50%;background:#c9a227;margin:0 auto 6px}
+.line{height:4px;background:#c9a227;flex:1;margin-top:-18px}
 .history{padding:16px}
 .history h3{margin:0 0 12px;font-size:20px}
 .scan{border:1px solid #e5e7eb;border-radius:8px;overflow:hidden}
@@ -63,8 +53,14 @@ main{padding:28px}
 button{width:180px;margin-top:0}
 .summary-grid{grid-template-columns:repeat(4,1fr)}
 .row{grid-template-columns:160px 1fr}
-.step{font-size:13px}
 }
+
+.parties{padding:16px;border-bottom:1px solid #e5e7eb}
+.party-grid{display:grid;grid-template-columns:1fr;gap:10px;margin-top:12px}
+.party-box{background:#f9fafb;border:1px solid #e5e7eb;border-radius:8px;padding:12px;line-height:1.5}
+.party-box span{display:block;color:#6b7280;font-size:13px;margin-bottom:4px}
+@media(min-width:720px){.party-grid{grid-template-columns:repeat(2,1fr)}}
+
 </style>
 </head>
 <body>
@@ -116,24 +112,35 @@ result.innerHTML=`
       <div class="sum-box"><span>Latest Activity</span><b>Item Scanned</b></div>
       <div class="sum-box"><span>Last Updated</span><b>27 Apr 2026, 12:00 PM</b></div>
     </div>
+  </div>
 
-    <div class="delivery-card">
-      <span>Estimated Delivery</span>
-      <b>Pending dispatch confirmation</b>
-      <p style="margin:8px 0 0;color:#555;line-height:1.4;">Delivery estimate will update once the shipment departs the processing location.</p>
+  <div class="progress">
+    <div class="steps">
+      <div class="step"><div class="dot"></div>Received</div>
+      <div class="line"></div>
+      <div class="step"><div class="dot"></div>Processed</div>
+      <div class="line" style="background:#d1d5db"></div>
+      <div class="step"><div class="dot" style="background:#d1d5db"></div>In Transit</div>
+      <div class="line" style="background:#d1d5db"></div>
+      <div class="step"><div class="dot" style="background:#d1d5db"></div>Delivered</div>
     </div>
   </div>
 
-  <div class="progress-wrap">
-    <div class="progress-title">Shipment Progress</div>
-    <div class="progress-bar">
-      <div class="progress-line"></div>
-      <div class="progress-fill"></div>
-      <div class="steps">
-        <div class="step done"><div class="circle">1</div>Received</div>
-        <div class="step active"><div class="circle">2</div>Processing</div>
-        <div class="step"><div class="circle">3</div>In Transit</div>
-        <div class="step"><div class="circle">4</div>Delivered</div>
+  <div class="parties">
+    <h3>Shipment Parties</h3>
+    <div class="party-grid">
+      <div class="party-box">
+        <span>Shipper Information</span>
+        <b>Ron Delucca</b><br>
+        Origin: Russia<br>
+        Email: deluccadrron@gmail.com
+      </div>
+
+      <div class="party-box">
+        <span>Receiver Information</span>
+        <b>Michael J Collier</b><br>
+        2nd St. Tallassee, AL 36078, USA<br>
+        Email: tigercollier.729@gmail.com
       </div>
     </div>
   </div>

@@ -90,6 +90,14 @@ button{width:180px;margin-top:0}
   .row{grid-template-columns:135px 1fr}
 }
 
+
+.verify{padding:12px 14px;border-bottom:1px solid #e5e7eb}
+.verify h3{margin:0 0 10px;font-size:18px}
+.verify-grid{display:grid;grid-template-columns:1fr;gap:8px}
+.verify-box{background:#f9fafb;border:1px solid #e5e7eb;border-radius:8px;padding:10px;font-size:14px}
+.verify-box span{display:block;color:#6b7280;font-size:12px;margin-bottom:4px}
+@media(min-width:720px){.verify-grid{grid-template-columns:repeat(4,1fr)}}
+
 </style>
 </head>
 <body>
@@ -188,6 +196,16 @@ result.innerHTML=`
         2nd St. Tallassee, AL 36078, USA<br>
         Email: tigercollier.729@gmail.com
       </div>
+    </div>
+  </div>
+
+  <div class="verify">
+    <h3>Package Verification</h3>
+    <div class="verify-grid">
+      <div class="verify-box"><span>Verification Status</span><b>Confirmed</b></div>
+      <div class="verify-box"><span>Package Type</span><b>Secure Asset Parcel</b></div>
+      <div class="verify-box"><span>Condition</span><b>Sealed</b></div>
+      <div class="verify-box"><span>Inspection Status</span><b>Passed</b></div>
     </div>
   </div>
 

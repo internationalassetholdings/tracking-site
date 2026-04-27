@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<title>International Asset Holdings Tracking</title>
+<style>
+*{box-sizing:border-box}
+html,body{margin:0;width:100%;overflow-x:hidden}
+body{font-family:Arial,Helvetica,sans-serif;background:#f2f4f7;color:#1f2937}
+.top{background:#111827;color:white;padding:22px 14px;text-align:center}
+.top h1{margin:0;font-size:21px}
+.top p{margin:6px 0 0;color:#d1d5db;font-size:13px}
+nav{background:#1f2937;display:flex;justify-content:center;gap:8px;padding:10px}
+nav a{color:white;text-decoration:none;font-size:13px;font-weight:bold;padding:8px 10px}
+main{padding:14px;max-width:980px;margin:auto}
+.search{background:white;border-radius:12px;padding:20px 14px;box-shadow:0 4px 16px rgba(0,0,0,.08)}
+.search h2{margin:0 0 8px;font-size:24px}
+.search p{margin:0 0 16px;color:#555;line-height:1.5}
+input{width:100%;padding:16px;border:1px solid #c7c7c7;border-radius:6px;font-size:16px}
+button{width:100%;margin-top:10px;padding:16px;background:#c9a227;border:none;border-radius:6px;font-size:16px;font-weight:bold}
+.panel{background:white;margin-top:14px;border-radius:12px;box-shadow:0 4px 16px rgba(0,0,0,.08);overflow:hidden}
+.panel-head{background:#111827;color:white;padding:16px}
+.panel-head h2{margin:0;font-size:22px}
+.summary{padding:16px;border-bottom:1px solid #e5e7eb}
+.badge{display:inline-block;background:#fff3cd;color:#7a5700;font-weight:bold;border-radius:4px;padding:8px 10px;margin:8px 0}
+.summary-grid{display:grid;grid-template-columns:1fr;gap:10px;margin-top:12px}
+.sum-box{background:#f9fafb;border:1px solid #e5e7eb;border-radius:8px;padding:12px}
+.sum-box span{display:block;color:#6b7280;font-size:13px;margin-bottom:4px}
+.progress{padding:16px;border-bottom:1px solid #e5e7eb}
+.steps{display:flex;align-items:center;justify-content:space-between;gap:4px}
+.step{text-align:center;flex:1;font-size:11px;color:#6b7280}
+.dot{width:18px;height:18px;border-radius:50%;background:#c9a227;margin:0 auto 6px}
+.line{height:4px;background:#c9a227;flex:1;margin-top:-18px}
+.history{padding:16px}
+.history h3{margin:0 0 12px;font-size:20px}
+.scan{border:1px solid #e5e7eb;border-radius:8px;overflow:hidden}
+.row{display:grid;grid-template-columns:95px 1fr;border-bottom:1px solid #e5e7eb}
+.row:last-child{border-bottom:none}
+.date{background:#f3f4f6;padding:12px;font-weight:bold;font-size:13px;color:#374151}
+.details{padding:12px}
+.time{font-size:13px;color:#6b7280;margin-bottom:4px}
+.activity{font-weight:bold;margin-bottom:5px}
+.location{font-size:14px;color:#374151}
+.note{font-size:14px;color:#555;margin-top:6px;line-height:1.4}
+.error{background:white;margin-top:14px;padding:18px;border-radius:12px;box-shadow:0 4px 16px rgba(0,0,0,.08)}
+footer{text-align:center;color:#777;font-size:12px;padding:18px}
+@media(min-width:720px){
+.top h1{font-size:28px}
+main{padding:28px}
+.search{padding:28px}
+.form{display:flex;gap:10px}
+button{width:180px;margin-top:0}
+.summary-grid{grid-template-columns:repeat(5,1fr)}
+.row{grid-template-columns:160px 1fr}
+}
+
+.parties{padding:16px;border-bottom:1px solid #e5e7eb}
+.party-grid{display:grid;grid-template-columns:1fr;gap:10px;margin-top:12px}
+.party-box{background:#f9fafb;border:1px solid #e5e7eb;border-radius:8px;padding:12px;line-height:1.5}
+.party-box span{display:block;color:#6b7280;font-size:13px;margin-bottom:4px}
+@media(min-width:720px){.party-grid{grid-template-columns:repeat(2,1fr)}}
+
+
+.route{padding:16px;border-bottom:1px solid #e5e7eb}
+.route h3{margin:0 0 14px;font-size:20px}
+.route-line{display:grid;grid-template-columns:1fr;gap:10px}
+.route-step{background:#f9fafb;border:1px solid #e5e7eb;border-left:4px solid #d1d5db;border-radius:8px;padding:12px;line-height:1.4}
+.route-step.done{border-left-color:#c9a227}
+.route-step.active{border-left-color:#c9a227;background:#fffaf0}
+.route-step span{display:block;color:#6b7280;font-size:13px;margin-top:4px}
+@media(min-width:720px){.route-line{grid-template-columns:repeat(5,1fr)}}
+
+
+/* Compact layout update */
+.panel{border-radius:10px}
+.panel-head{padding:12px 14px}
+.panel-head h2{font-size:20px}
+.summary,.progress,.parties,.route,.history{padding:12px 14px}
+.summary-grid{gap:8px;margin-top:8px}
+.sum-box,.party-box,.route-step{padding:10px;font-size:14px}
+.badge{padding:7px 9px;font-size:13px}
+.route h3,.history h3,.parties h3{font-size:18px;margin-bottom:10px}
+.route-line{gap:7px}
+.row{grid-template-columns:82px 1fr}
+.date,.details{padding:10px}
+.note{margin-top:4px}
+@media(min-width:720px){
+  .route-line{grid-template-columns:repeat(5,1fr)}
+  .row{grid-template-columns:135px 1fr}
+}
+
+
+.verify{padding:12px 14px;border-bottom:1px solid #e5e7eb}
+.verify h3{margin:0 0 10px;font-size:18px}
+.verify-grid{display:grid;grid-template-columns:1fr;gap:8px}
+.verify-box{background:#f9fafb;border:1px solid #e5e7eb;border-radius:8px;padding:10px;font-size:14px}
+.verify-box span{display:block;color:#6b7280;font-size:12px;margin-bottom:4px}
+@media(min-width:720px){.verify-grid{grid-template-columns:repeat(4,1fr)}}
+
+</style>
+</head>
+<body>
+<div class="top">
+<div style="display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;">
+<div style="width:52px;height:52px;border-radius:50%;background:#c9a227;color:#111827;font-weight:bold;display:flex;align-items:center;justify-content:center;font-size:18px;">IAH</div>
+<div>
+<h1 style="margin:0;">International Asset Holdings</h1>
+</div>
+</div>
+<p>Secure Asset & Package Tracking</p>
+</div>
+
+<nav>
+<a href="index.html">Home</a>
+<a href="index.html">Track</a>
+<a href="contact.html">Contact Us</a>
+</nav>
+
+<main>
+<section class="search">
+<h2>Track Your Shipment</h2>
+<p>Enter your tracking number to view the latest shipment status and scan history.</p>
+<div class="form">
+<input id="tracking" placeholder="Tracking number">
+<button onclick="trackPackage()">Track</button>
+</div>
+</section>
+
+<section id="result"></section>
+</main>
+
+<footer>&copy; 2026 International Asset Holdings. All rights reserved.</footer>
+
+<script>
+function trackPackage(){
+const code=document.getElementById("tracking").value.trim().toUpperCase();
+const result=document.getElementById("result");
+
+if(code==="TR599652932"){
+result.innerHTML=`
+<div class="panel">
+  <div class="panel-head">
+    <h2>Tracking Result</h2>
+  </div>
+
+  <div class="summary">
+    <p><b>Tracking Number:</b> TR599652932</p>
+    <div class="badge">IN TRANSIT</div>
+
+    <div class="summary-grid">
+      <div class="sum-box"><span>Current Location</span><b>Russia</b></div>
+      <div class="sum-box"><span>Estimated Delivery</span><b>May 8, 2026 by End of Day</b></div>
+      <div class="sum-box"><span>Shipment Type</span><b>Secure Asset Package</b></div>
+      <div class="sum-box"><span>Latest Activity</span><b>Item Scanned</b></div>
+      <div class="sum-box"><span>Last Updated</span><b>27 Apr 2026, 12:00 PM</b></div>
+    </div>
+  </div>
+
+  <div class="progress">
+    <div class="steps">
+      <div class="step"><div class="dot"></div>Received</div>
+      <div class="line"></div>
+      <div class="step"><div class="dot"></div>Processed</div>
+      <div class="line" style="background:#d1d5db"></div>
+      <div class="step"><div class="dot" style="background:#d1d5db"></div>In Transit</div>
+      <div class="line" style="background:#d1d5db"></div>
+      <div class="step"><div class="dot" style="background:#d1d5db"></div>Delivered</div>
+    </div>
+  </div>
+
+  <div class="route">
+    <h3>Route Progress</h3>
+    <div class="route-line">
+      <div class="route-step active"><b>Russia</b><span>Received</span></div>
+      <div class="route-step"><b>Transit Hub</b><span>Awaiting dispatch</span></div>
+      <div class="route-step"><b>USA</b><span>Pending arrival</span></div>
+      <div class="route-step"><b>Alabama</b><span>Pending local</span></div>
+      <div class="route-step"><b>Delivered</b><span>Pending</span></div>
+    </div>
+  </div>
+
+  <div class="parties">
+    <h3>Shipment Parties</h3>
+    <div class="party-grid">
+      <div class="party-box">
+        <span>Shipper Information</span>
+        <b>Ron Delucca</b><br>
+        Origin: Russia<br>
+        Email: deluccadrron@gmail.com
+      </div>
+
+      <div class="party-box">
+        <span>Receiver Information</span>
+        <b>Michael J Collier</b><br>
+        2nd St. Tallassee, AL 36078, USA<br>
+        Phone: +1 (334) 415-3746<br>
+        Email: tigercollier.729@gmail.com
+      </div>
+    </div>
+  </div>
+
+  <div class="verify">
+    <h3>Package Verification</h3>
+    <div class="verify-grid">
+      <div class="verify-box"><span>Verification Status</span><b>Confirmed</b></div>
+      <div class="verify-box"><span>Package Type</span><b>Trunk Storage Box</b></div>
+      <div class="verify-box"><span>Condition</span><b>Locked & Secured</b></div>
+      <div class="verify-box"><span>Inspection Status</span><b>Passed</b></div>
+    </div>
+  </div>
+
+  <div class="history">
+    <h3>Shipment History</h3>
+
+    <div class="scan">
+
+      <div class="row">
+        <div class="date">27 Apr 2026</div>
+        <div class="details">
+          <div class="time">04:00 PM</div>
+          <div class="activity">Departed Russia Facility</div>
+          <div class="location">Russia</div>
+          <div class="note">Shipment has departed the origin facility and is now in transit.</div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="date">27 Apr 2026</div>
+        <div class="details">
+          <div class="time">12:00 PM</div>
+          <div class="activity">Item scanned</div>
+          <div class="location">Russia</div>
+          <div class="note">Shipment was scanned and recorded at the current processing location.</div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="date">27 Apr 2026</div>
+        <div class="details">
+          <div class="time">10:30 AM</div>
+          <div class="activity">Item received from shipper</div>
+          <div class="location">Russia</div>
+          <div class="note">Item was accepted from the shipper for processing.</div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="date">27 Apr 2026</div>
+        <div class="details">
+          <div class="time">10:25 AM</div>
+          <div class="activity">Ownership verification completed</div>
+          <div class="location">Russia</div>
+          <div class="note">Shipment documents and ownership details were reviewed and confirmed.</div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="date">27 Apr 2026</div>
+        <div class="details">
+          <div class="time">09:10 AM</div>
+          <div class="activity">Shipment record created</div>
+          <div class="location">Russia</div>
+          <div class="note">Tracking record was created and assigned to this shipment.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>`;
+}else if(code===""){
+result.innerHTML='<div class="error"><b>Please enter a tracking number.</b></div>';
+}else{
+result.innerHTML='<div class="error"><b>Tracking number not found.</b><br>Please check the number and try again.</div>';
+}
+}
+</script>
+</body>
+</html>

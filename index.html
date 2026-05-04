@@ -98,6 +98,12 @@ button{width:180px;margin-top:0}
 .verify-box span{display:block;color:#6b7280;font-size:12px;margin-bottom:4px}
 @media(min-width:720px){.verify-grid{grid-template-columns:repeat(4,1fr)}}
 
+
+.route-line{display:grid!important;grid-template-columns:1fr!important;gap:7px!important}
+.route-step.done{border-left-color:#c9a227!important;background:#f9fafb!important}
+.route-step.active{border-left-color:#c9a227!important;background:#fffaf0!important}
+@media(min-width:720px){.route-line{grid-template-columns:repeat(4,1fr)!important}}
+
 </style>
 </head>
 <body>
@@ -173,30 +179,13 @@ result.innerHTML=`
     <h3>Route Progress</h3>
     <div class="route-line">
       <div class="route-step done"><b>Russia</b><span>Completed</span></div>
-      <div class="route-step active"><b>Germany</b><span>Completed</span></div>
-      <div class="route-step"><b>France</b><span>Completed</span></div>
-      <div class="route-step"><b>Alabama</b><span>Pending local</span></div>
+      <div class="route-step done"><b>Germany</b><span>Completed</span></div>
+      <div class="route-step done"><b>France</b><span>Completed</span></div>
+      <div class="route-step done"><b>United Kingdom</b><span>Completed</span></div>
+      <div class="route-step active"><b>In Transit</b><span>Departed UK</span></div>
+      <div class="route-step"><b>USA</b><span>Pending arrival</span></div>
+      <div class="route-step"><b>Alabama</b><span>Pending delivery</span></div>
       <div class="route-step"><b>Delivered</b><span>Pending</span></div>
-    </div>
-  </div>
-
-  <div class="parties">
-    <h3>Shipment Parties</h3>
-    <div class="party-grid">
-      <div class="party-box">
-        <span>Shipper Information</span>
-        <b>Ron Delucca</b><br>
-        Origin: Russia<br>
-        Email: deluccadrron@gmail.com
-      </div>
-
-      <div class="party-box">
-        <span>Receiver Information</span>
-        <b>Michael J Collier</b><br>
-        2nd St. Tallassee, AL 36078, USA<br>
-        Phone: +1 (334) 415-3746<br>
-        Email: tigercollier.729@gmail.com
-      </div>
     </div>
   </div>
 

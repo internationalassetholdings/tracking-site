@@ -104,6 +104,17 @@ button{width:180px;margin-top:0}
 .route-step.active{border-left-color:#c9a227!important;background:#fffaf0!important}
 @media(min-width:720px){.route-line{grid-template-columns:repeat(4,1fr)!important}}
 
+
+.customs-alert {
+  background: #ffe5e5;
+  border-left: 5px solid red;
+  color: #8b0000;
+  padding: 12px;
+  margin-bottom: 15px;
+  border-radius: 6px;
+  font-weight: bold;
+}
+
 </style>
 </head>
 <body>
@@ -199,7 +210,12 @@ result.innerHTML=`
     </div>
   </div>
 
-  <div class="history">
+  
+<div class="customs-alert">
+  <b>This shipment is currently undergoing customs clearance in New York, USA. The recipient will be notified by the carrier once the clearance assessment is completed. Where applicable, customs duties, taxes, or clearance charges must be settled during processing prior to final delivery.</b>
+</div>
+
+<div class="history">
     <h3>Shipment History</h3>
 
     <div class="scan">

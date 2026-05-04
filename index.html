@@ -104,15 +104,6 @@ button{width:180px;margin-top:0}
 .route-step.active{border-left-color:#c9a227!important;background:#fffaf0!important}
 @media(min-width:720px){.route-line{grid-template-columns:repeat(4,1fr)!important}}
 
-
-.shipment-status {
-  background: #fff8e1;
-  border-left: 4px solid #c9a227;
-  padding: 12px;
-  margin-bottom: 15px;
-  border-radius: 6px;
-}
-
 </style>
 </head>
 <body>
@@ -133,15 +124,6 @@ button{width:180px;margin-top:0}
 </nav>
 
 <main>
-
-<div class="card">
-  <h2>Shipment Status</h2>
-  <p><b>Status:</b> On Hold — Customs Processing</p>
-  <p><b>Reason:</b> Awaiting clearance review</p>
-  <p style="margin-top:10px;"><b>Note:</b> The shipment is currently undergoing customs processing. Movement will resume once clearance procedures are completed. If applicable, the carrier will notify the recipient with any required next steps prior to delivery.</p>
-  <p><b>Additional Info:</b> Charges may apply depending on customs assessment.</p>
-</div>
-
 <section class="search">
 <h2>Track Your Shipment</h2>
 <p>Enter your tracking number to view the latest shipment status and scan history.</p>
@@ -217,16 +199,7 @@ result.innerHTML=`
     </div>
   </div>
 
-  
-<div class="shipment-status">
-  <h3>Shipment Status</h3>
-  <p><b>Status:</b> On Hold — Customs Processing</p>
-  <p><b>Reason:</b> Awaiting clearance review</p>
-  <p><b>Note:</b> The shipment is currently undergoing customs processing. Movement will resume once clearance procedures are completed. If applicable, the carrier will notify the recipient with any required next steps prior to delivery.</p>
-  <p><b>Additional Info:</b> Charges may apply depending on customs assessment.</p>
-</div>
-
-<div class="history">
+  <div class="history">
     <h3>Shipment History</h3>
 
     <div class="scan">
